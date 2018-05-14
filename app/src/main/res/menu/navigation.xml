@@ -4,7 +4,8 @@
     <item
         android:id="@+id/navigation_question"
         android:icon="@drawable/ic_question_answer_black_24dp"
-        android:title="@string/title_activity_question" />
+        android:title="@string/title_activity_question"/>
+
     <item
         android:id="@+id/navigation_search"
         android:icon="@drawable/ic_search_black_24dp"

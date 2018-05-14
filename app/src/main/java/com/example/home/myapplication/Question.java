@@ -52,6 +52,7 @@ public class Question extends AppCompatActivity {
         mTextMessage = (TextView) findViewById(R.id.message);
         mTextMessage.setText(R.string.title_activity_question);
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
+        navigation.setSelectedItemId(R.id.navigation_question);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
     }
 }

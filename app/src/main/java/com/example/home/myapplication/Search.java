@@ -51,6 +51,7 @@ public class Search extends AppCompatActivity {
         mTextMessage = (TextView) findViewById(R.id.message);
         mTextMessage.setText(R.string.title_activity_search);
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
+        navigation.setSelectedItemId(R.id.navigation_search);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
     }
 }

@@ -52,6 +52,7 @@ public class Collection extends AppCompatActivity {
         mTextMessage = (TextView) findViewById(R.id.message);
         mTextMessage.setText(R.string.title_activity_collection);
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
+        navigation.setSelectedItemId(R.id.navigation_collection);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
     }
 
