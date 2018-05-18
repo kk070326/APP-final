@@ -49,8 +49,6 @@ public class Setting extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_setting);
 
-        mTextMessage = (TextView) findViewById(R.id.message);
-        mTextMessage.setText(R.string.title_activity_setting);
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setSelectedItemId(R.id.navigation_setting);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
