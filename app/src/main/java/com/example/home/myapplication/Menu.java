@@ -2,15 +2,26 @@ package com.example.home.myapplication;
 
 import android.graphics.Bitmap;
 
-public class Menu {
+import java.io.Serializable;
+
+public class Menu implements Serializable{
     private String kind;
     private String classification;
     private String dishes_name;
     private String creative;
     private String specialty_dishes;
     private String practic;
-    private Bitmap imgid;
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    private Bitmap imgid;
+    private int id;
     public Bitmap getImgid() {
         return imgid;
     }

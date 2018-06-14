@@ -17,7 +17,7 @@ public class FireBaseThread extends Thread{
     private DataSnapshot dataSnapshot;
     private MenuArrayAdapter adapter = null;
     private static final int LIST_MENU = 1;
-    List<Menu> lsMenu;
+    public static List<Menu> lsMenu;
 
     public FireBaseThread(DataSnapshot dataSnapshot, MenuArrayAdapter adapter){
         this.dataSnapshot = dataSnapshot;
@@ -44,6 +44,7 @@ public class FireBaseThread extends Thread{
     @Override
     public void run (){
         lsMenu = new ArrayList<>();
+        int id = 0;
         for(DataSnapshot ds : dataSnapshot.getChildren()){
             DataSnapshot ds_name = ds.child("dishes_name");
             DataSnapshot ds_classification = ds.child("classification");
@@ -54,15 +55,16 @@ public class FireBaseThread extends Thread{
             DataSnapshot ds_url = ds.child("url");
 
             Menu menu = new Menu();
+            menu.setId(id);
             menu.setClassification((String)ds_classification.getValue());
             menu.setCreative((String)ds_creative.getValue());
             menu.setDishes_name((String)ds_name.getValue());
             menu.setKind((String)ds_kind.getValue());
             menu.setPractic((String)ds_practic.getValue());
             menu.setSpecialty_dishes((String)ds_specialty.getValue());
-
             menu.setImgid(getImgBitmap((String)ds_url.getValue()));
             lsMenu.add(menu);
+            id++;
         }
 
 
@@ -84,4 +86,5 @@ public class FireBaseThread extends Thread{
         }
         return null;
     }
+
 }
