@@ -27,7 +27,8 @@
             android:label="@string/title_activity_setting" />
         <activity
             android:name=".Question"
-            android:label="@string/title_activity_question"></activity>
+            android:label="@string/title_activity_question" />
+        <activity android:name=".RecipeInfo"></activity>
     </application>
 
 </manifest>
