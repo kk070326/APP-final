@@ -1,5 +1,7 @@
 package com.example.home.myapplication;
 
+import android.graphics.Bitmap;
+
 public class Menu {
     private String kind;
     private String classification;
@@ -7,20 +9,13 @@ public class Menu {
     private String creative;
     private String specialty_dishes;
     private String practic;
-    private String url;
-    private int imgid;
+    private Bitmap imgid;
 
-    public Menu(String kind, String classification, String dishes_name,
-                String creative, String specialty_dishes, String practic,
-                String url, int imgid){
+    public Bitmap getImgid() {
+        return imgid;
+    }
 
-        this.kind = kind;
-        this.classification = classification;
-        this.dishes_name = dishes_name;
-        this.creative = creative;
-        this.specialty_dishes = specialty_dishes;
-        this.practic = practic;
-        this.url = url;
+    public void setImgid(Bitmap imgid) {
         this.imgid = imgid;
     }
 
@@ -48,16 +43,8 @@ public class Menu {
         this.dishes_name = dishes_name;
     }
 
-    public int getImgid() {
-        return imgid;
-    }
-
-    public void setImgid(int imgid) {
-        this.imgid = imgid;
-    }
 
     public String getCreative() {
-
         return creative;
     }
 
@@ -81,11 +68,4 @@ public class Menu {
         this.practic = practic;
     }
 
-    public String getUrl() {
-        return url;
-    }
-
-    public void setUrl(String url) {
-        this.url = url;
-    }
 }

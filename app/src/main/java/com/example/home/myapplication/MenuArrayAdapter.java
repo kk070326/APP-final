@@ -43,7 +43,7 @@ public class MenuArrayAdapter extends ArrayAdapter<Menu> {
         TextView tv_specialty = (TextView)itemlayout.findViewById(R.id.dishes_specialty);
         tv_specialty.setText(item.getSpecialty_dishes());
         ImageView iv = (ImageView)itemlayout.findViewById(R.id.img_dishes);
-        iv.setImageResource(item.getImgid());
+        iv.setImageBitmap(item.getImgid());
         return itemlayout;
     }
 }
