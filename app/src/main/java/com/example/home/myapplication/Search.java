@@ -6,15 +6,21 @@ import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Search extends AppCompatActivity {
 
     ImageButton btn_img ;
+    EditText et_input;
+    ListView lv;
+    MenuArrayAdapter adapter;
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -56,13 +62,40 @@ public class Search extends AppCompatActivity {
         navigation.setSelectedItemId(R.id.navigation_search);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
-        ArrayList<Menu> menu = new ArrayList<Menu>();
 
+        adapter = new MenuArrayAdapter (this, new ArrayList<Menu>());
+        lv = (ListView)findViewById(R.id.list);
+        lv.setEmptyView(findViewById(R.id.empty));
 
-        MenuArrayAdapter adapter = new MenuArrayAdapter (this, menu);
-        ListView lv = (ListView)findViewById(R.id.list);
-        //lv.setEmptyView();
+        btn_img = findViewById(R.id.searchImageButton);
+        btn_img.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                et_input = findViewById(R.id.et_input);
+                String str = et_input.getText().toString();
 
+                List<Menu> index = searchMenu(str);
+                if(index.size() == 0){
+                    lv.setEmptyView(findViewById(R.id.empty));
+                }else{
+                    adapter.clear();
+                    adapter.addAll(index);
+                    lv.setAdapter(adapter);
+                }
+            }
+        });
 
+    }
+
+    public List<Menu> searchMenu(String input){
+        List<Menu> menus = FireBaseThread.lsMenu;
+        List<Menu> index = new ArrayList<>();
+        for(Menu menu:menus){
+            if(menu.getDishes_name().contains(input)){
+                index.add(menu);
+            }
+        }
+
+        return index;
     }
 }
