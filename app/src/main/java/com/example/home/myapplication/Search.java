@@ -7,6 +7,7 @@ import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ListView;
@@ -74,14 +75,35 @@ public class Search extends AppCompatActivity {
                 et_input = findViewById(R.id.et_input);
                 String str = et_input.getText().toString();
 
-                List<Menu> index = searchMenu(str);
-                if(index.size() == 0){
+                if(str.equals("")){
                     lv.setEmptyView(findViewById(R.id.empty));
-                }else{
                     adapter.clear();
-                    adapter.addAll(index);
                     lv.setAdapter(adapter);
+                }else{
+                    List<Menu> index = searchMenu(str);
+                    if(index.size() == 0){
+                        lv.setEmptyView(findViewById(R.id.empty));
+                        adapter.clear();
+                        lv.setAdapter(adapter);
+                        //lv.invalidateViews();
+                    }else{
+                        adapter.clear();
+                        adapter.addAll(index);
+                        lv.setAdapter(adapter);
+                    }
                 }
+
+            }
+        });
+
+        lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Menu menu = (Menu)parent.getAdapter().getItem(position);
+                Intent intent = new Intent();
+                intent.setClass(Search.this,RecipeInfo.class);
+                intent.putExtra("INDEX",menu.getId());
+                startActivity(intent);
             }
         });
 
@@ -91,7 +113,8 @@ public class Search extends AppCompatActivity {
         List<Menu> menus = FireBaseThread.lsMenu;
         List<Menu> index = new ArrayList<>();
         for(Menu menu:menus){
-            if(menu.getDishes_name().contains(input)){
+            if(menu.getDishes_name().contains(input) || menu.getKind().contains(input)
+                    || menu.getClassification().contains(input) || menu.getCreative().contains(input)){
                 index.add(menu);
             }
         }
