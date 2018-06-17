@@ -26,7 +26,7 @@ public class RecipeInfo extends AppCompatActivity {
     Button btn_add;
     Menu menu;
     List<Integer> ids;
-    static Boolean check;
+    Boolean check;
     private FirebaseDatabase mFirebase;
     private DatabaseReference databaseReference;
 
@@ -89,7 +89,7 @@ public class RecipeInfo extends AppCompatActivity {
                         check = true;
                     }
                 }
-                
+
                 if(!check){
                     DatabaseReference newdataref = databaseReference.child("ID").push();
                     newdataref.setValue(id);
