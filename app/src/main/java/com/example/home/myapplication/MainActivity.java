@@ -77,6 +77,7 @@ public class MainActivity extends AppCompatActivity {
         ListView lvMenu = (ListView)findViewById(R.id.list);
         lvMenu.setAdapter(adapter);
         getMenuFromFirebase();
+
         lvMenu.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {

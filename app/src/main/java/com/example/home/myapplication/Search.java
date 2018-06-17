@@ -6,6 +6,7 @@ import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
+import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -13,7 +14,7 @@ import java.util.ArrayList;
 
 public class Search extends AppCompatActivity {
 
-    private TextView mTextMessage;
+    ImageButton btn_img ;
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -60,7 +61,8 @@ public class Search extends AppCompatActivity {
 
         MenuArrayAdapter adapter = new MenuArrayAdapter (this, menu);
         ListView lv = (ListView)findViewById(R.id.list);
-        lv.setAdapter(adapter);
-        //lv.setOnItemClickListener(itemclick);
+        //lv.setEmptyView();
+
+
     }
 }

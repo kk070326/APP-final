@@ -6,11 +6,20 @@ import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
-public class Question extends AppCompatActivity {
+import java.util.Random;
 
-    private TextView mTextMessage;
+public class Question extends AppCompatActivity {
+    TextView tv_name ;
+    TextView tv_spec;
+    ImageView img;
+    Button btn_chg;
+    Button btn_view;
+    Menu menu;
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -49,10 +58,51 @@ public class Question extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_question);
 
-        mTextMessage = (TextView) findViewById(R.id.message);
-        mTextMessage.setText(R.string.title_activity_question);
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setSelectedItemId(R.id.navigation_question);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+        tv_name = (TextView) findViewById(R.id.tv_cname);
+        tv_spec = (TextView) findViewById(R.id.tv_cspec);
+        img = (ImageView) findViewById(R.id.iv_repice);
+
+        rdmMenu();
+        tv_name.setText(menu.getDishes_name());
+        tv_spec.setText(menu.getSpecialty_dishes());
+        img.setImageBitmap(menu.getImgid());
+
+        btn_chg = (Button) findViewById(R.id.btn_rnd);
+        btn_view = (Button) findViewById(R.id.btn_view);
+
+        btn_chg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                rdmMenu();
+                tv_name.setText(menu.getDishes_name());
+                tv_spec.setText(menu.getSpecialty_dishes());
+                img.setImageBitmap(menu.getImgid());
+            }
+        });
+
+        btn_view.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent();
+                intent.setClass(Question.this,RecipeInfo.class);
+                intent.putExtra("INDEX",menu.getId());
+                startActivity(intent);
+
+            }
+        });
+
+
     }
+
+    public void rdmMenu(){
+        Random rd = new Random();
+        int num = rd.nextInt(FireBaseThread.lsMenu.size());
+
+        menu = FireBaseThread.lsMenu.get(num);
+    }
+
+
 }

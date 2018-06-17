@@ -6,4 +6,7 @@
     <string name="title_activity_setting">Setting</string>
     <string name="title_activity_question">Question</string>
     <string name="title_activity_recipe_info">RecipeInfo</string>
+    <string name="title_activity_classification">classification</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
 </resources>

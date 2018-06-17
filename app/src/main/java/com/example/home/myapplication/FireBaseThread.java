@@ -67,7 +67,6 @@ public class FireBaseThread extends Thread{
             id++;
         }
 
-
         Message msg = new Message();
         msg.what = LIST_MENU;
         msg.obj = lsMenu;
