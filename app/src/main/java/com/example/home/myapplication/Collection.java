@@ -13,7 +13,6 @@ import java.util.ArrayList;
 
 public class Collection extends AppCompatActivity {
 
-    private TextView mTextMessage;
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -56,17 +55,7 @@ public class Collection extends AppCompatActivity {
         navigation.setSelectedItemId(R.id.navigation_collection);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
-        ArrayList<Menu> menu = new ArrayList<Menu>();
 
-
-
-
-
-
-        MenuArrayAdapter adapter = new MenuArrayAdapter (this, menu);
-        ListView lv = (ListView)findViewById(R.id.list);
-        lv.setAdapter(adapter);
-        //lv.setOnItemClickListener(itemclick);
     }
 
 
