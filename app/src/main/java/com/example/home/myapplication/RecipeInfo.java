@@ -40,7 +40,7 @@ public class RecipeInfo extends AppCompatActivity {
         mFirebase = FirebaseDatabase.getInstance();
         databaseReference = mFirebase.getReference("Collection");
 
-        int index = intent.getIntExtra("INDEX",0);
+        final int index = intent.getIntExtra("INDEX",0);
         menu  = FireBaseThread.lsMenu.get(index);
 
         TextView tv_name = (TextView) findViewById(R.id.tv_name);
@@ -71,7 +71,9 @@ public class RecipeInfo extends AppCompatActivity {
                 int id = menu.getId();
                 checkExist(id);
                 check = false;
-
+                Intent intent = new Intent();
+                intent.setClass(RecipeInfo.this,Collection.class);
+                startActivity(intent);
             }
         });
     }
