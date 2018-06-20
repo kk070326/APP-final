@@ -38,7 +38,7 @@ public class RecipeInfo extends AppCompatActivity {
         Intent intent = getIntent();
 
         mFirebase = FirebaseDatabase.getInstance();
-        databaseReference = mFirebase.getReference("Colloction");
+        databaseReference = mFirebase.getReference("Collection");
 
         int index = intent.getIntExtra("INDEX",0);
         menu  = FireBaseThread.lsMenu.get(index);
@@ -71,7 +71,6 @@ public class RecipeInfo extends AppCompatActivity {
                 int id = menu.getId();
                 checkExist(id);
                 check = false;
-                Log.v("Check","123 " + check);
 
             }
         });
@@ -94,8 +93,6 @@ public class RecipeInfo extends AppCompatActivity {
                     DatabaseReference newdataref = databaseReference.child("ID").push();
                     newdataref.setValue(id);
                     Toast.makeText(RecipeInfo.this, "Done add!", Toast.LENGTH_SHORT).show();
-                }else{
-                    Toast.makeText(RecipeInfo.this, "Already exist!!", Toast.LENGTH_SHORT).show();
                 }
 
             }
@@ -104,6 +101,8 @@ public class RecipeInfo extends AppCompatActivity {
             public void onCancelled(DatabaseError databaseError) {
             }
         });
+
+
     }
 
     public List<Integer> getID(String value){

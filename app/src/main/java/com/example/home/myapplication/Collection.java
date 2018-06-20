@@ -7,11 +7,13 @@ import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -29,7 +31,7 @@ public class Collection extends AppCompatActivity {
     Menu menu;
     List<Menu> menus;
     MenuArrayAdapter adapter;
-    List<Integer> ids;
+    static List<Integer> ids;
     ListView lv;
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
@@ -74,7 +76,7 @@ public class Collection extends AppCompatActivity {
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
         mFirebase = FirebaseDatabase.getInstance();
-        databaseReference = mFirebase.getReference("Colloction");
+        databaseReference = mFirebase.getReference("Collection");
         menus = new ArrayList<Menu>();
         adapter = new MenuArrayAdapter (this, new ArrayList<Menu>());
         lv = (ListView)findViewById(R.id.list);
@@ -92,9 +94,9 @@ public class Collection extends AppCompatActivity {
 
         lv.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
-            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+            public boolean onItemLongClick(AdapterView<?> parent, View view, final int position, long id) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(Collection.this);
-                Menu menu = (Menu)parent.getAdapter().getItem(position);
+                final Menu lmenu = (Menu)parent.getAdapter().getItem(position);
                 final AlertDialog builderCre = builder.create();
 
                 builder.setMessage("Confirm delete??\n");
@@ -105,13 +107,25 @@ public class Collection extends AppCompatActivity {
                         builderCre.dismiss();
                     }
                 });
+
+                builder.setPositiveButton("Sure", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        for(int j : ids){
+                            Log.v("123321","a "+j);
+                        }
+                        ids.remove(position);
+                        Toast.makeText(Collection.this,"Opps",Toast.LENGTH_SHORT).show();
+                        builderCre.dismiss();
+                    }
+                });
                 builder.show();
 
-                return false;
+                return true;
             }
         });
-
     }
+
 
     public void showlsMenu(){
         databaseReference.addValueEventListener(new ValueEventListener() {
