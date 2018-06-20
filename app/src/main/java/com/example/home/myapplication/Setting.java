@@ -61,21 +61,18 @@ public class Setting extends AppCompatActivity {
         about_us.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                AlertDialog.Builder dialog = new AlertDialog.Builder(Setting.this);
-                dialog.setTitle("關於我們");
-                dialog.setMessage("組員:"+"\n\n"+"辜武漢、翁竹延、范瑋倫、陳昱彣");
-                DialogInterface.OnClickListener listener =new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
+            AlertDialog.Builder dialog = new AlertDialog.Builder(Setting.this);
+            dialog.setTitle("關於我們");
+            dialog.setMessage("組員:"+"\n\n"+"辜武漢、翁竹延、范瑋倫、陳昱彣");
+            DialogInterface.OnClickListener listener =new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
 
-                    }
-                };
-                dialog.setPositiveButton("OK",listener);
-                dialog.show();
-
+                }
+            };
+            dialog.setPositiveButton("OK",listener);
+            dialog.show();
             }
         });
     }
-
-
 }

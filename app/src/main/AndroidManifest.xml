@@ -26,10 +26,12 @@
             android:name=".Setting"
             android:label="@string/title_activity_setting" />
         <activity
-            android:name=".Answer"
+            android:name=".Question"
             android:label="@string/title_activity_question" />
         <activity android:name=".RecipeInfo" />
-        <activity android:name=".Question"></activity>
+        <activity
+            android:name=".Answer"
+            android:label="Answer"/>
     </application>
 
 </manifest>
