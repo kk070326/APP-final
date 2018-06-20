@@ -26,9 +26,10 @@
             android:name=".Setting"
             android:label="@string/title_activity_setting" />
         <activity
-            android:name=".Question"
+            android:name=".Answer"
             android:label="@string/title_activity_question" />
         <activity android:name=".RecipeInfo" />
+        <activity android:name=".Question"></activity>
     </application>
 
 </manifest>

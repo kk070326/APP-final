@@ -11,7 +11,6 @@ import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ListView;
-import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -72,27 +71,26 @@ public class Search extends AppCompatActivity {
         btn_img.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                et_input = findViewById(R.id.et_input);
-                String str = et_input.getText().toString();
+            et_input = findViewById(R.id.et_input);
+            String str = et_input.getText().toString();
 
-                if(str.equals("")){
+            if(str.equals("")){
+                lv.setEmptyView(findViewById(R.id.empty));
+                adapter.clear();
+                lv.setAdapter(adapter);
+            }else{
+                List<Menu> index = searchMenu(str);
+                if(index.size() == 0){
                     lv.setEmptyView(findViewById(R.id.empty));
                     adapter.clear();
                     lv.setAdapter(adapter);
+                    //lv.invalidateViews();
                 }else{
-                    List<Menu> index = searchMenu(str);
-                    if(index.size() == 0){
-                        lv.setEmptyView(findViewById(R.id.empty));
-                        adapter.clear();
-                        lv.setAdapter(adapter);
-                        //lv.invalidateViews();
-                    }else{
-                        adapter.clear();
-                        adapter.addAll(index);
-                        lv.setAdapter(adapter);
-                    }
+                    adapter.clear();
+                    adapter.addAll(index);
+                    lv.setAdapter(adapter);
                 }
-
+            }
             }
         });
 

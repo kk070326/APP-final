@@ -12,7 +12,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
@@ -58,7 +57,7 @@ public class Collection extends AppCompatActivity {
                     startActivity(intent);
                     return true;
                 case R.id.navigation_question:
-                    intent.setClass(Collection.this,Question.class);
+                    intent.setClass(Collection.this,Answer.class);
                     startActivity(intent);
                     return true;
             }

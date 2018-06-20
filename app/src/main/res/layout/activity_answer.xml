@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/question_background"
-    tools:context=".Question">
+    tools:context=".Answer">
 
     <android.support.design.widget.BottomNavigationView
         android:id="@+id/navigation"
@@ -35,18 +35,26 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
-            android:id="@+id/iv_ques"
-            android:layout_width="300px"
-            android:layout_height="300px"
-            android:layout_gravity="center"
-            android:scaleType="centerCrop"
+            android:id="@+id/iv_repice"
+            android:layout_width="match_parent"
+            android:layout_height="159dp"
             app:srcCompat="@mipmap/ic_launcher" />
 
         <TextView
-            android:id="@+id/tv_question"
+            android:id="@+id/tv_cname"
             android:layout_width="match_parent"
-            android:gravity="center"
-            android:layout_height="88dp"/>
+            android:layout_height="67dp"
+            android:text="NAME"
+            android:textAlignment="center"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tv_cspec"
+            android:layout_width="match_parent"
+            android:layout_height="94dp"
+            android:text="specialty"
+            android:textAlignment="center"
+            android:textStyle="bold" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -54,21 +62,21 @@
             android:orientation="horizontal">
 
             <Button
-                android:id="@+id/btn_y"
+                android:id="@+id/btn_rnd"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_weight="1"
-                android:text="YES"
+                android:text="CHANGE"
                 android:textStyle="bold" />
 
             <Button
-                android:id="@+id/btn_n"
+                android:id="@+id/btn_view"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:text="NO"
+                android:text="VIEW"
                 android:textStyle="bold" />
         </LinearLayout>
 
