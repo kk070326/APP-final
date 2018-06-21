@@ -17,7 +17,6 @@ import java.util.ArrayList;
 
 public class Setting extends AppCompatActivity {
 
-    private TextView mTextMessage;
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -75,6 +74,24 @@ public class Setting extends AppCompatActivity {
             };
             dialog.setPositiveButton("OK",listener);
             dialog.show();
+            }
+        });
+
+        Button feedback = (Button)findViewById(R.id.btn_feedback);
+        feedback.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AlertDialog.Builder dialog = new AlertDialog.Builder(Setting.this);
+                dialog.setTitle("Email");
+                dialog.setMessage("\n\nForFeedBack@gmail.com");
+                DialogInterface.OnClickListener listener =new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                    }
+                };
+                dialog.setPositiveButton("OK",listener);
+                dialog.show();
             }
         });
     }

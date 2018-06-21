@@ -22,6 +22,7 @@
     <LinearLayout
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:background="#b7f0f9"
         android:orientation="vertical"
         app:layout_constraintBottom_toTopOf="@+id/navigation"
         app:layout_constraintEnd_toEndOf="parent"
@@ -30,31 +31,11 @@
         android:background="@color/colorAccent">
 
         <Button
-            android:id="@+id/btn_history"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
-            android:layout_marginTop="20dp"
-            android:paddingBottom="20dp"
-            android:paddingTop="20dp"
-            android:text="history" />
-
-        <Button
-            android:id="@+id/btn_qa"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
-            android:layout_marginTop="10dp"
-            android:paddingBottom="20dp"
-            android:paddingTop="20dp"
-            android:text="QA" />
-
-        <Button
             android:id="@+id/btn_feedback"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="100dp"
             android:paddingBottom="20dp"
             android:paddingTop="20dp"
             android:text="feedback" />
